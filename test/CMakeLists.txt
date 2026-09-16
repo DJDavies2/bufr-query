@@ -108,6 +108,7 @@ foreach(FILENAME ${test_input})
     ${CMAKE_CURRENT_BINARY_DIR}/${FILENAME} )
 endforeach(FILENAME)
 
+set(TEST_TOLERANCE 0.0)
 
 ecbuild_add_test( TARGET  test_bufr_filtering
                   TYPE    SCRIPT
@@ -117,7 +118,8 @@ ecbuild_add_test( TARGET  test_bufr_filtering
                           "${CMAKE_BINARY_DIR}/bin/bufr2netcdf.x testdata/gdas.t18z.1bmhs.tm00.bufr_d
                                                                  testinput/bufrtest_filtering_mapping.yaml
                                                                  testrun/bufrtest_filtering.nc"
-                          bufrtest_filtering.nc)
+                          bufrtest_filtering.nc
+                          ${TEST_TOLERANCE})
 
 ecbuild_add_test( TARGET  test_bufr_split
                   TYPE    SCRIPT
@@ -127,7 +129,8 @@ ecbuild_add_test( TARGET  test_bufr_split
                           "${CMAKE_BINARY_DIR}/bin/bufr2netcdf.x testdata/gdas.t18z.1bmhs.tm00.bufr_d
                                                                  testinput/bufrtest_split_mapping.yaml
                                                                  testrun/bufrtest_split_{splits/hour}_{splits/minute}.nc"
-                          bufrtest_split_15_seven.nc)
+                          bufrtest_split_15_seven.nc
+                          ${TEST_TOLERANCE})
 
 ecbuild_add_test( TARGET  test_bufr_filter_split
                   TYPE    SCRIPT
@@ -137,7 +140,8 @@ ecbuild_add_test( TARGET  test_bufr_filter_split
                           "${CMAKE_BINARY_DIR}/bin/bufr2netcdf.x testdata/gdas.t18z.1bmhs.tm00.bufr_d
                                                                  testinput/bufrtest_filter_split_mapping.yaml
                                                                  testrun/bufrtest_filter_split_{splits/hour}_{splits/minute}.nc"
-                          bufrtest_filter_split_15_7.nc)
+                          bufrtest_filter_split_15_7.nc
+                          ${TEST_TOLERANCE})
 
 ecbuild_add_test( TARGET  test_bufr_empty_fields
                   TYPE    SCRIPT
@@ -147,7 +151,8 @@ ecbuild_add_test( TARGET  test_bufr_empty_fields
                           "${CMAKE_BINARY_DIR}/bin/bufr2netcdf.x testdata/bufr_empty_fields.bufr_d
                                                                  testinput/bufrtest_empty_fields_mapping.yaml
                                                                  testrun/bufrtest_empty_fields.nc"
-                          bufrtest_empty_fields.nc)
+                          bufrtest_empty_fields.nc
+                          ${TEST_TOLERANCE})
 
 
 ecbuild_add_test( TARGET  test_bufr_simple_groupby
@@ -158,7 +163,8 @@ ecbuild_add_test( TARGET  test_bufr_simple_groupby
                           "${CMAKE_BINARY_DIR}/bin/bufr2netcdf.x testdata/bufr_simple_groupby.bufr
                                                                  testinput/bufrtest_simple_groupby_mapping.yaml
                                                                  testrun/bufrtest_simple_groupby.nc"
-                          bufrtest_simple_groupby.nc)
+                          bufrtest_simple_groupby.nc
+                          ${TEST_TOLERANCE})
 
 ecbuild_add_test( TARGET  test_bufr_read_2_dim_blocks
                   TYPE    SCRIPT
@@ -168,7 +174,8 @@ ecbuild_add_test( TARGET  test_bufr_read_2_dim_blocks
                           "${CMAKE_BINARY_DIR}/bin/bufr2netcdf.x testdata/bufr_read_2_dim_blocks.bufr
                                                                  testinput/bufrtest_read_2_dim_blocks_mapping.yaml
                                                                  testrun/bufrtest_read_2_dim_blocks.nc"
-                          bufrtest_read_2_dim_blocks.nc)
+                          bufrtest_read_2_dim_blocks.nc
+                          ${TEST_TOLERANCE})
 
 ecbuild_add_test( TARGET  test_bufr_mhs_basic
                   TYPE    SCRIPT
@@ -178,7 +185,8 @@ ecbuild_add_test( TARGET  test_bufr_mhs_basic
                           "${CMAKE_BINARY_DIR}/bin/bufr2netcdf.x testdata/gdas.t18z.1bmhs.tm00.bufr_d
                                                                  testinput/bufrtest_mhs_basic_mapping.yaml
                                                                  testrun/bufrtest_mhs_basic.nc"
-                          bufrtest_mhs_basic.nc)
+                          bufrtest_mhs_basic.nc
+                          ${TEST_TOLERANCE})
 
 ecbuild_add_test( TARGET  test_bufr_hrs_basic
                   TYPE    SCRIPT
@@ -188,7 +196,8 @@ ecbuild_add_test( TARGET  test_bufr_hrs_basic
                           "${CMAKE_BINARY_DIR}/bin/bufr2netcdf.x testdata/gdas.t00z.1bhrs4.tm00.bufr_d
                                                                  testinput/bufrtest_hrs_basic_mapping.yaml
                                                                  testrun/bufrtest_hrs_basic.nc"
-                          bufrtest_hrs_basic.nc)
+                          bufrtest_hrs_basic.nc
+                          ${TEST_TOLERANCE})
 
 ecbuild_add_test( TARGET  test_bufr_adpupa
                   TYPE    SCRIPT
@@ -198,7 +207,8 @@ ecbuild_add_test( TARGET  test_bufr_adpupa
                           "${CMAKE_BINARY_DIR}/bin/bufr2netcdf.x testdata/gdas.t12z.adpupa.tm00.bufr_d
                                                                  testinput/bufrtest_adpupa_mapping.yaml
                                                                  testrun/bufrtest_adpupa.nc"
-                          bufrtest_adpupa.nc)
+                          bufrtest_adpupa.nc
+                          ${TEST_TOLERANCE})
 
 ecbuild_add_test( TARGET  test_bufr_amua_ta
                   TYPE    SCRIPT
@@ -208,7 +218,8 @@ ecbuild_add_test( TARGET  test_bufr_amua_ta
                           "${CMAKE_BINARY_DIR}/bin/bufr2netcdf.x testdata/gdas.t12z.1bamua.tm00.bufr_d
                                                                  testinput/bufrtest_amua_ta_mapping.yaml
                                                                  testrun/bufrtest_amua_{splits/satId}_ta.nc"
-                          bufrtest_amua_metop-a_ta.nc)
+                          bufrtest_amua_metop-a_ta.nc
+                          ${TEST_TOLERANCE})
 
 ecbuild_add_test( TARGET  test_bufr_amua_n15
                   TYPE    SCRIPT
@@ -218,7 +229,8 @@ ecbuild_add_test( TARGET  test_bufr_amua_n15
                           "${CMAKE_BINARY_DIR}/bin/bufr2netcdf.x testdata/gdas.t12z.1bamua.tm00.bufr_d
                                                                  testinput/bufrtest_amua_n15_mapping.yaml
                                                                  testrun/bufrtest_amua_{splits/satId}.nc"
-                          bufrtest_amua_n15.nc)
+                          bufrtest_amua_n15.nc
+                          ${TEST_TOLERANCE})
 
 ecbuild_add_test( TARGET  test_bufr_esamua
                   TYPE    SCRIPT
@@ -228,7 +240,8 @@ ecbuild_add_test( TARGET  test_bufr_esamua
                           "${CMAKE_BINARY_DIR}/bin/bufr2netcdf.x testdata/gdas.t12z.esamua.tm00.bufr_d
                                                                  testinput/bufrtest_esamua_mapping.yaml
                                                                  testrun/bufrtest_esamua_{splits/satId}.nc"
-                          bufrtest_esamua_n18.nc)
+                          bufrtest_esamua_n18.nc
+                          ${TEST_TOLERANCE})
 
 ecbuild_add_test( TARGET  test_bufr_mhs
                   TYPE    SCRIPT
@@ -248,7 +261,8 @@ ecbuild_add_test( TARGET  test_bufr_esmhs
                           "${CMAKE_BINARY_DIR}/bin/bufr2netcdf.x testdata/gdas.t12z.esmhs.tm00.bufr_d
                                                                  testinput/bufrtest_esmhs_mapping.yaml
                                                                  testrun/bufrtest_esmhs_{splits/satId}.nc"
-                          bufrtest_esmhs_noaa-19.nc)
+                          bufrtest_esmhs_noaa-19.nc
+                          ${TEST_TOLERANCE})
 
 ecbuild_add_test( TARGET  test_bufr_adpsfc
                   TYPE    SCRIPT
@@ -258,7 +272,8 @@ ecbuild_add_test( TARGET  test_bufr_adpsfc
                           "${CMAKE_BINARY_DIR}/bin/bufr2netcdf.x testdata/gdas.t12z.adpsfc.tm00.bufr_d
                                                                  testinput/bufrtest_adpsfc_mapping.yaml
                                                                  testrun/bufrtest_adpsfc.nc"
-                          bufrtest_adpsfc.nc)
+                          bufrtest_adpsfc.nc
+                          ${TEST_TOLERANCE})
 
 ecbuild_add_test( TARGET  test_bufr_adpsfc_prepbufr
                   TYPE    SCRIPT
@@ -268,7 +283,8 @@ ecbuild_add_test( TARGET  test_bufr_adpsfc_prepbufr
                           "${CMAKE_BINARY_DIR}/bin/bufr2netcdf.x testdata/gdas.t12z.adpsfc.prepbufr
                                                                  testinput/bufrtest_adpsfc_prepbufr_mapping.yaml
                                                                  testrun/bufrtest_adpsfc_prepbufr.nc"
-                          bufrtest_adpsfc_prepbufr.nc)
+                          bufrtest_adpsfc_prepbufr.nc
+                          ${TEST_TOLERANCE})
 
 ecbuild_add_test( TARGET  test_bufr_adpsfc_snow
                   TYPE    SCRIPT
@@ -278,7 +294,8 @@ ecbuild_add_test( TARGET  test_bufr_adpsfc_snow
                           "${CMAKE_BINARY_DIR}/bin/bufr2netcdf.x testdata/gdas.t06z.adpsfc.tm00.bufr_d
                                                                  testinput/bufrtest_adpsfc_snow_mapping.yaml
                                                                  testrun/bufrtest_adpsfc_snow.nc"
-                          bufrtest_adpsfc_snow.nc)
+                          bufrtest_adpsfc_snow.nc
+                          ${TEST_TOLERANCE})
 
 ecbuild_add_test( TARGET  test_bufr_aircar
                   TYPE    SCRIPT
@@ -288,7 +305,8 @@ ecbuild_add_test( TARGET  test_bufr_aircar
                           "${CMAKE_BINARY_DIR}/bin/bufr2netcdf.x testdata/gdas.t12z.aircar.tm00.bufr_d
                                                                  testinput/bufrtest_aircar_mapping.yaml
                                                                  testrun/bufrtest_aircar.nc"
-                          bufrtest_aircar.nc)
+                          bufrtest_aircar.nc
+                          ${TEST_TOLERANCE})
 
 ecbuild_add_test( TARGET  test_bufr_aircft_noamdar103
                   TYPE    SCRIPT
@@ -298,7 +316,8 @@ ecbuild_add_test( TARGET  test_bufr_aircft_noamdar103
                           "${CMAKE_BINARY_DIR}/bin/bufr2netcdf.x testdata/gdas.t12z.aircft.tm00.bufr_d
                                                                  testinput/bufrtest_aircft_noamdar103_mapping.yaml
                                                                  testrun/bufrtest_aircft_noamdar103.nc"
-                          bufrtest_aircft_noamdar103.nc)
+                          bufrtest_aircft_noamdar103.nc
+                          ${TEST_TOLERANCE})
 
 ecbuild_add_test( TARGET  test_bufr_aircft_amdar103
                   TYPE    SCRIPT
@@ -308,7 +327,8 @@ ecbuild_add_test( TARGET  test_bufr_aircft_amdar103
                           "${CMAKE_BINARY_DIR}/bin/bufr2netcdf.x testdata/gdas.t12z.aircft.tm00.bufr_d
                                                                  testinput/bufrtest_aircft_amdar103_mapping.yaml
                                                                  testrun/bufrtest_aircft_amdar103.nc"
-                          bufrtest_aircft_amdar103.nc)
+                          bufrtest_aircft_amdar103.nc
+                          ${TEST_TOLERANCE})
 
 ecbuild_add_test( TARGET  test_bufr_aircft_prepbufr
                   TYPE    SCRIPT
@@ -318,7 +338,8 @@ ecbuild_add_test( TARGET  test_bufr_aircft_prepbufr
                           "${CMAKE_BINARY_DIR}/bin/bufr2netcdf.x testdata/gdas.t12z.acft_profiles.prepbufr
                                                                  testinput/bufrtest_aircft_prepbufr_mapping.yaml
                                                                  testrun/bufrtest_aircft_prepbufr.nc"
-                          bufrtest_aircft_prepbufr.nc)
+                          bufrtest_aircft_prepbufr.nc
+                          ${TEST_TOLERANCE})
 
 ecbuild_add_test( TARGET  test_bufr_wmo_radiosonde
                   TYPE    SCRIPT
@@ -329,7 +350,8 @@ ecbuild_add_test( TARGET  test_bufr_wmo_radiosonde
                                                                  testinput/bufrtest_wmo_radiosonde_mapping.yaml
                                                                  testrun/bufrtest_wmo_radiosonde.nc
                                                                  -t testdata/bufr_tables"
-                          bufrtest_wmo_radiosonde.nc)
+                          bufrtest_wmo_radiosonde.nc
+                          ${TEST_TOLERANCE})
 
 ecbuild_add_test( TARGET  test_bufr_satwnd_old_format
                   TYPE    SCRIPT
@@ -339,7 +361,8 @@ ecbuild_add_test( TARGET  test_bufr_satwnd_old_format
                           "${CMAKE_BINARY_DIR}/bin/bufr2netcdf.x testdata/bufr_satwnd_old_format.bufr
                                                                  testinput/bufrtest_satwnd_old_format_mapping.yaml
                                                                  testrun/bufrtest_satwnd_old_format.nc"
-                          bufrtest_satwnd_old_format.nc)
+                          bufrtest_satwnd_old_format.nc
+                          ${TEST_TOLERANCE})
 
 ecbuild_add_test( TARGET  test_bufr_satwnd_new_format
                   TYPE    SCRIPT
@@ -349,7 +372,8 @@ ecbuild_add_test( TARGET  test_bufr_satwnd_new_format
                           "${CMAKE_BINARY_DIR}/bin/bufr2netcdf.x testdata/bufr_satwnd_new_format.bufr
                                                                  testinput/bufrtest_satwnd_new_format_mapping.yaml
                                                                  testrun/bufrtest_satwnd_new_format.nc"
-                          bufrtest_satwnd_new_format.nc)
+                          bufrtest_satwnd_new_format.nc
+                          ${TEST_TOLERANCE})
 
 ecbuild_add_test( TARGET  test_bufr_satwnd_avhrr
                   TYPE    SCRIPT
@@ -359,7 +383,8 @@ ecbuild_add_test( TARGET  test_bufr_satwnd_avhrr
                           "${CMAKE_BINARY_DIR}/bin/bufr2netcdf.x testdata/gdas.t18z.satwnd_avhrr.tm00.bufr_d
                                                                  testinput/bufrtest_satwnd_avhrr_mapping.yaml
                                                                  testrun/bufrtest_satwnd_avhrr.nc"
-                          bufrtest_satwnd_avhrr.nc)
+                          bufrtest_satwnd_avhrr.nc
+                          ${TEST_TOLERANCE})
 
 ecbuild_add_test( TARGET  test_bufr_mtiasi
                   TYPE    SCRIPT
@@ -369,7 +394,8 @@ ecbuild_add_test( TARGET  test_bufr_mtiasi
                           "${CMAKE_BINARY_DIR}/bin/bufr2netcdf.x testdata/gdas.t12z.mtiasi.tm00.bufr_d
                                                                  testinput/bufrtest_mtiasi_mapping.yaml
                                                                  testrun/bufrtest_mtiasi_{splits/satId}.nc"
-                          bufrtest_mtiasi_metop-c.nc)
+                          bufrtest_mtiasi_metop-c.nc
+                          ${TEST_TOLERANCE})
 
 #ecbuild_add_test( TARGET  test_bufr_mtiasi_cached
 #                  TYPE    SCRIPT
@@ -379,7 +405,8 @@ ecbuild_add_test( TARGET  test_bufr_mtiasi
 #                          "${CMAKE_BINARY_DIR}/bin/bufr2netcdf.x testdata/gdas.t12z.mtiasi.tm00.bufr_d
 #                                                                 testinput/bufrtest_mtiasi_cached_mapping.yaml
 #                                                                 testrun/bufrtest_mtiasi_cached_{splits/satId}.nc"
-#                          bufrtest_mtiasi_metop-c.nc)
+#                          bufrtest_mtiasi_metop-c.nc
+#                          ${TEST_TOLERANCE})
 
 ecbuild_add_test( TARGET  test_bufr_atms
                   TYPE    SCRIPT
@@ -389,7 +416,8 @@ ecbuild_add_test( TARGET  test_bufr_atms
                           "${CMAKE_BINARY_DIR}/bin/bufr2netcdf.x testdata/gdas.t00z.atms.tm00.bufr_d
                                                                  testinput/bufrtest_atms_mapping.yaml
                                                                  testrun/bufrtest_atms_{splits/satId}.nc"
-                          bufrtest_atms_n20.nc)
+                          bufrtest_atms_n20.nc
+                          ${TEST_TOLERANCE})
 
 ecbuild_add_test( TARGET  test_bufr_sfcshp
                   TYPE    SCRIPT
@@ -399,7 +427,8 @@ ecbuild_add_test( TARGET  test_bufr_sfcshp
                           "${CMAKE_BINARY_DIR}/bin/bufr2netcdf.x testdata/bufr_sfcshp.bufr
                                                                  testinput/bufrtest_sfcshp_mapping.yaml
                                                                  testrun/bufrtest_sfcshp.nc"
-                          bufrtest_sfcshp.nc)
+                          bufrtest_sfcshp.nc
+                          ${TEST_TOLERANCE})
 
 ecbuild_add_test( TARGET  test_bufr_adpupa_prepbufr
                   TYPE    SCRIPT
@@ -409,7 +438,8 @@ ecbuild_add_test( TARGET  test_bufr_adpupa_prepbufr
                           "${CMAKE_BINARY_DIR}/bin/bufr2netcdf.x testdata/bufr_adpupa_prepbufr.bufr
                                                                  testinput/bufrtest_adpupa_prepbufr_mapping.yaml
                                                                  testrun/bufrtest_adpupa_prepbufr.nc"
-                          bufrtest_adpupa_prepbufr.nc)
+                          bufrtest_adpupa_prepbufr.nc
+                          ${TEST_TOLERANCE})
 
 ecbuild_add_test( TARGET  test_bufr_rtma_mesonet
                   TYPE    SCRIPT
@@ -419,7 +449,8 @@ ecbuild_add_test( TARGET  test_bufr_rtma_mesonet
                           "${CMAKE_BINARY_DIR}/bin/bufr2netcdf.x testdata/rtma_ru.t00z.msonet.tm00.bufr_d
                                                                  testinput/bufrtest_rtma_mesonet_mapping.yaml
                                                                  testrun/bufrtest_rtma_mesonet.nc"
-                          bufrtest_rtma_mesonet.nc)
+                          bufrtest_rtma_mesonet.nc
+                          ${TEST_TOLERANCE})
 
 ecbuild_add_test( TARGET  test_bufr_rtma_adpsfc
                   TYPE    SCRIPT
@@ -429,7 +460,8 @@ ecbuild_add_test( TARGET  test_bufr_rtma_adpsfc
                           "${CMAKE_BINARY_DIR}/bin/bufr2netcdf.x testdata/rtma_ru.t0000z.adpsfc_nc000101.tm00.bufr_d
                                                                  testinput/bufrtest_rtma_adpsfc_mapping.yaml
                                                                  testrun/bufrtest_rtma_adpsfc.nc"
-                          bufrtest_rtma_adpsfc.nc)
+                          bufrtest_rtma_adpsfc.nc
+                          ${TEST_TOLERANCE})
 
 ecbuild_add_test( TARGET  test_bufr_sevcsr
                   TYPE    SCRIPT
@@ -439,7 +471,8 @@ ecbuild_add_test( TARGET  test_bufr_sevcsr
                           "${CMAKE_BINARY_DIR}/bin/bufr2netcdf.x testdata/gdas.t00z.sevcsr.tm00.bufr_d
                                                                  testinput/bufrtest_sevcsr_mapping.yaml
                                                                  testrun/bufrtest_sevcsr.nc"
-                          bufrtest_sevcsr.nc)
+                          bufrtest_sevcsr.nc
+                          ${TEST_TOLERANCE})
 
 ecbuild_add_test( TARGET  test_bufr_specific_subsets_by_query
                   TYPE    SCRIPT
@@ -449,7 +482,8 @@ ecbuild_add_test( TARGET  test_bufr_specific_subsets_by_query
                           "${CMAKE_BINARY_DIR}/bin/bufr2netcdf.x testdata/gdas.t12z.aircft.tm00.bufr_d
                                                                  testinput/bufrtest_specific_subsets_by_query_mapping.yaml
                                                                  testrun/bufrtest_specific_subsets_by_query.nc"
-                          bufrtest_specific_subsets_by_query.nc)
+                          bufrtest_specific_subsets_by_query.nc
+                          ${TEST_TOLERANCE})
 
 ecbuild_add_test( TARGET  test_bufr_specifying_subsets
                   TYPE    SCRIPT
@@ -459,7 +493,8 @@ ecbuild_add_test( TARGET  test_bufr_specifying_subsets
                           "${CMAKE_BINARY_DIR}/bin/bufr2netcdf.x testdata/gdas.t12z.aircft.tm00.bufr_d
                                                                  testinput/bufrtest_specifying_subsets_mapping.yaml
                                                                  testrun/bufrtest_specifying_subsets.nc"
-                          bufrtest_specifying_subsets.nc)
+                          bufrtest_specifying_subsets.nc
+                          ${TEST_TOLERANCE})
 
 ecbuild_add_test( TARGET  test_bufr_lgycld_rrfs
                   TYPE    SCRIPT
@@ -469,7 +504,8 @@ ecbuild_add_test( TARGET  test_bufr_lgycld_rrfs
                           "${CMAKE_BINARY_DIR}/bin/bufr2netcdf.x testdata/rap.t06z.lgycld.tm00.bufr_d
                                                                  testinput/bufrtest_lgycld_rrfs_mapping.yaml
                                                                  testrun/bufrtest_lgycld_rrfs.nc"
-                          bufrtest_lgycld_rrfs.nc)
+                          bufrtest_lgycld_rrfs.nc
+                          ${TEST_TOLERANCE})
 
 ecbuild_add_test( TARGET  test_bufr_adpsfc_cloud_rrfs_prepbufr
                   TYPE    SCRIPT
@@ -479,7 +515,8 @@ ecbuild_add_test( TARGET  test_bufr_adpsfc_cloud_rrfs_prepbufr
                           "${CMAKE_BINARY_DIR}/bin/bufr2netcdf.x testdata/rap.t06z.adpsfc.prepbufr.tm00.bufr
                                                                  testinput/bufrtest_adpsfc_cloud_rrfs_prepbufr_mapping.yaml
                                                                  testrun/bufrtest_adpsfc_cloud_rrfs_prepbufr.nc"
-                          bufrtest_adpsfc_cloud_rrfs_prepbufr.nc)
+                          bufrtest_adpsfc_cloud_rrfs_prepbufr.nc
+                          ${TEST_TOLERANCE})
 
 ecbuild_add_test( TARGET  test_bufr_long_strs
                   TYPE    SCRIPT
@@ -489,7 +526,8 @@ ecbuild_add_test( TARGET  test_bufr_long_strs
                           "${CMAKE_BINARY_DIR}/bin/bufr2netcdf.x testdata/gdas.t06z.snocvr.tm00.bufr_d
                                                                  testinput/bufrtest_long_strs_mapping.yaml
                                                                  testrun/bufrtest_long_strs.nc"
-                          bufrtest_long_strs.nc)
+                          bufrtest_long_strs.nc
+                          ${TEST_TOLERANCE})
 
 ecbuild_add_test( TARGET  test_bufr_rtma_aircft
                   TYPE    SCRIPT
@@ -499,7 +537,8 @@ ecbuild_add_test( TARGET  test_bufr_rtma_aircft
                           "${CMAKE_BINARY_DIR}/bin/bufr2netcdf.x testdata/rtma_ru.t0000z.aircft.tm00_nc004006.bufr_d
                                                                  testinput/bufrtest_rtma_aircft_mapping.yaml
                                                                  testrun/bufrtest_rtma_aircft.nc"
-                          bufrtest_rtma_aircft.nc)
+                          bufrtest_rtma_aircft.nc
+                          ${TEST_TOLERANCE})
 
 ecbuild_add_test( TARGET  test_bufr_rtma_aircft_NC004103
                   TYPE    SCRIPT
@@ -509,7 +548,8 @@ ecbuild_add_test( TARGET  test_bufr_rtma_aircft_NC004103
                           "${CMAKE_BINARY_DIR}/bin/bufr2netcdf.x testdata/rtma_ru.t0000z.aircft.tm00_nc004103.bufr_d
                                                                  testinput/bufrtest_rtma_aircft_NC004103_mapping.yaml
                                                                  testrun/bufrtest_rtma_aircft_NC004103.nc"
-                          bufrtest_rtma_aircft_NC004103.nc)
+                          bufrtest_rtma_aircft_NC004103.nc
+                          ${TEST_TOLERANCE})
 
 ecbuild_add_test( TARGET  test_bufr_wmo_amdar_multi
                   TYPE    SCRIPT
@@ -520,7 +560,8 @@ ecbuild_add_test( TARGET  test_bufr_wmo_amdar_multi
                                                                  testinput/bufrtest_wmo_amdar_multi_mapping.yaml
                                                                  testrun/bufrtest_wmo_amdar_multi.nc
                                                                  -t testdata/bufr_tables"
-                          bufrtest_wmo_amdar_multi.nc)
+                          bufrtest_wmo_amdar_multi.nc
+                          ${TEST_TOLERANCE})
 
 ecbuild_add_test( TARGET  test_bufr_dim_labels
                   TYPE    SCRIPT
@@ -530,7 +571,8 @@ ecbuild_add_test( TARGET  test_bufr_dim_labels
                           "${CMAKE_BINARY_DIR}/bin/bufr2netcdf.x testdata/gdas.t00z.1bhrs4.tm00.bufr_d
                                                                  testinput/bufrtest_dim_labels_mapping.yaml
                                                                  testrun/bufrtest_hrs_basic.nc"
-  bufrtest_hrs_basic.nc)
+                          bufrtest_hrs_basic.nc
+                          ${TEST_TOLERANCE})
 
 ecbuild_add_test( TARGET  test_missing_subset_data
                   TYPE    SCRIPT
