@@ -108,7 +108,9 @@ foreach(FILENAME ${test_input})
     ${CMAKE_CURRENT_BINARY_DIR}/${FILENAME} )
 endforeach(FILENAME)
 
-set(TEST_TOLERANCE 0.0)
+if(NOT TEST_TOLERANCE)
+  set(TEST_TOLERANCE 0.0)
+endif()
 
 ecbuild_add_test( TARGET  test_bufr_filtering
                   TYPE    SCRIPT
